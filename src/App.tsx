@@ -1,8 +1,10 @@
 import { lazy, Suspense } from 'react'
 import { AppShell } from './components/layout/AppShell'
+import { ActivityLedger } from './components/ledger/ActivityLedger'
 import { AgentCard } from './components/ui/AgentCard'
 import { TelemetryMetricCard } from './components/ui/TelemetryMetricCard'
 import { demoAgents } from './data/agents'
+import { demoEvents } from './data/ledger'
 import { DEMO_SNAPSHOT, demoMetrics } from './data/telemetry'
 
 // Dev-only visual check (open /#ui-kit). `import.meta.env.DEV` is false in production
@@ -10,16 +12,7 @@ import { DEMO_SNAPSHOT, demoMetrics } from './data/telemetry'
 const ButtonShowcase = import.meta.env.DEV ? lazy(() => import('./dev/ButtonShowcase')) : null
 const MetricsShowcase = import.meta.env.DEV ? lazy(() => import('./dev/MetricsShowcase')) : null
 const AgentsShowcase = import.meta.env.DEV ? lazy(() => import('./dev/AgentsShowcase')) : null
-
-function Placeholder({ label, className = '' }: { label: string; className?: string }) {
-  return (
-    <div
-      className={`grid place-items-center rounded-xl border border-dashed border-atlas-border bg-atlas-surface/50 p-4 text-center text-xs text-atlas-muted ${className}`}
-    >
-      {label}
-    </div>
-  )
-}
+const LedgerShowcase = import.meta.env.DEV ? lazy(() => import('./dev/LedgerShowcase')) : null
 
 function App() {
   if (ButtonShowcase && window.location.hash === '#ui-kit') {
@@ -47,6 +40,16 @@ function App() {
       <AppShell title="Agent UI (dev)">
         <Suspense fallback={null}>
           <AgentsShowcase />
+        </Suspense>
+      </AppShell>
+    )
+  }
+
+  if (LedgerShowcase && window.location.hash === '#ui-ledger') {
+    return (
+      <AppShell title="Ledger UI (dev)">
+        <Suspense fallback={null}>
+          <LedgerShowcase />
         </Suspense>
       </AppShell>
     )
@@ -92,12 +95,7 @@ function App() {
           </div>
         </section>
 
-        <section aria-labelledby="ledger-heading" className="flex flex-col gap-3">
-          <h2 id="ledger-heading" className="text-sm font-semibold">
-            Activity ledger
-          </h2>
-          <Placeholder label="Placeholder: activity ledger (coming in a later milestone)" className="min-h-64" />
-        </section>
+        <ActivityLedger events={demoEvents} />
       </div>
     </AppShell>
   )
