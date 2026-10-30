@@ -58,12 +58,12 @@ export function LedgerTable({ events, sort, onSortChange }: LedgerTableProps) {
     <table className="w-full table-fixed text-left">
       <caption className="sr-only">Execution events, with time in UTC</caption>
       <colgroup>
-        <col className="w-[156px]" />
-        <col className="w-[200px]" />
+        <col className="w-[9.75rem]" />
+        <col className="w-[12.5rem]" />
         <col />
-        <col className="w-[152px]" />
-        <col className="w-[88px]" />
-        <col className="w-[144px]" />
+        <col className="w-[9.5rem]" />
+        <col className="w-[5.5rem]" />
+        <col className="w-[9rem]" />
       </colgroup>
       <thead>
         <tr className="border-y border-atlas-border bg-atlas-hover">

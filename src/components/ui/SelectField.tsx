@@ -12,7 +12,7 @@ export interface SelectFieldProps {
 }
 
 // Figma: 05 — SelectField. A native <select> (keyboard + screen-reader support for free),
-// restyled: 36px, radius lg, bg + border tokens, chevron icon.
+// restyled: 36px, radius lg, bg + control-border tokens, chevron icon.
 export function SelectField({ label, value, onValueChange, children, className }: SelectFieldProps) {
   const id = useId()
   return (
@@ -25,7 +25,7 @@ export function SelectField({ label, value, onValueChange, children, className }
           id={id}
           value={value}
           onChange={(event) => onValueChange(event.target.value)}
-          className="min-h-9 w-full appearance-none rounded-lg border border-atlas-border bg-atlas-bg py-1.5 pr-9 pl-3 text-sm text-atlas-text focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-atlas-accent"
+          className="min-h-9 w-full appearance-none rounded-lg border border-atlas-control-border bg-atlas-bg py-1.5 pr-9 pl-3 text-sm text-atlas-text focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-atlas-accent"
         >
           {children}
         </select>

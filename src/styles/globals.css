@@ -9,6 +9,8 @@
   --color-atlas-bg: #0b0d12;
   --color-atlas-surface: #131720;
   --color-atlas-border: #232938;
+  /* Boundary of text inputs and selects only (WCAG 1.4.11: >= 3:1 against surface, page and hover fills). Cards, chips and dividers keep --color-atlas-border. */
+  --color-atlas-control-border: #646e86;
   --color-atlas-text: #f4f6fc;
   --color-atlas-muted: #929cb1;
   --color-atlas-accent: #8b85ff;
@@ -39,6 +41,7 @@
   --color-atlas-bg: #f6f7fb;
   --color-atlas-surface: #ffffff;
   --color-atlas-border: #d9deea;
+  --color-atlas-control-border: #7d8699;
   --color-atlas-text: #11141c;
   --color-atlas-muted: #4c566b;
   --color-atlas-accent: #5a52e0;

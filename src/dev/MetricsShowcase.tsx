@@ -28,7 +28,7 @@ export default function MetricsShowcase() {
   return (
     <div className="flex flex-col gap-6" data-testid="metrics-kit">
       <p className="text-sm text-atlas-muted">Dev-only. Loading, empty, error and stress cases.</p>
-      <div className="grid grid-cols-1 gap-4 min-[480px]:grid-cols-2 xl:grid-cols-4">
+      <div className="grid grid-cols-1 gap-4 min-[30rem]:grid-cols-2 xl:grid-cols-4">
         {[...demoMetrics.slice(0, 1), ...states].map((m) => (
           <TelemetryMetricCard key={m.id} metric={m} />
         ))}

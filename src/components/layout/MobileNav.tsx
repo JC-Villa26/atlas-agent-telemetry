@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { BREAKPOINTS } from '../../lib/breakpoints'
 import { Icon } from '../ui/Icon'
 import { IconButton } from '../ui/IconButton'
 import { Brand } from './Brand'
@@ -26,7 +27,7 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
 
   // If the window grows to desktop width, the drawer has no reason to stay open.
   useEffect(() => {
-    const media = window.matchMedia('(min-width: 1024px)')
+    const media = window.matchMedia(BREAKPOINTS.lg)
     const onChange = () => media.matches && onClose()
     media.addEventListener('change', onChange)
     return () => media.removeEventListener('change', onChange)

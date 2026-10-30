@@ -47,41 +47,45 @@ export function AgentCard({ agent, density = 'expanded', demo = true, className 
         className,
       )}
     >
-      <header className="flex items-center gap-3">
-        <span
-          aria-hidden="true"
-          className={cx(
-            'grid shrink-0 place-items-center rounded-lg border border-atlas-border bg-atlas-hover text-atlas-accent-text',
-            d.avatar,
-          )}
-        >
-          <Icon name="agents" className={cx(d.icon, '[&_path]:[vector-effect:non-scaling-stroke]')} />
-        </span>
-        <div className="flex min-w-0 flex-1 flex-col gap-1">
-          <h3 id={nameId} className={cx('min-w-0 font-semibold break-words text-atlas-text', d.name)}>
-            {agent.name}
-          </h3>
-          <code className="block min-w-0 truncate font-mono text-xs text-atlas-muted" title={agent.id}>
-            {agent.id}
-          </code>
+      {/* Wraps when the badge no longer fits (large browser font size); the badge stays right-aligned. */}
+      <header className="flex flex-wrap items-center gap-x-3 gap-y-2">
+        <div className="flex min-w-[min(8rem,100%)] flex-1 items-center gap-3">
+          <span
+            aria-hidden="true"
+            className={cx(
+              'grid shrink-0 place-items-center rounded-lg border border-atlas-border bg-atlas-hover text-atlas-accent-text',
+              d.avatar,
+            )}
+          >
+            <Icon name="agents" className={cx(d.icon, '[&_path]:[vector-effect:non-scaling-stroke]')} />
+          </span>
+          <div className="flex min-w-0 flex-1 flex-col gap-1">
+            <h3 id={nameId} className={cx('min-w-0 font-semibold break-words text-atlas-text', d.name)}>
+              {agent.name}
+            </h3>
+            <code className="block min-w-0 truncate font-mono text-xs text-atlas-muted" title={agent.id}>
+              {agent.id}
+            </code>
+          </div>
         </div>
-        <div className="shrink-0">
+        <div className="ml-auto max-w-full shrink-0">
           <span className="sr-only">Status: </span>
-          <AgentStatusBadge status={agent.status} size="sm" />
+          {/* flex-wrap / max-w-full only matter when the pill is wider than the card (huge font on a tiny screen). */}
+          <AgentStatusBadge status={agent.status} size="sm" className="max-w-full flex-wrap" />
         </div>
       </header>
 
       <p className="text-sm text-atlas-text">{agent.task}</p>
 
       {expanded && agent.progress ? (
-        <ExecutionProgress progress={agent.progress} description={agent.progressNote} />
+        <ExecutionProgress progress={agent.progress} description={agent.progressNote} label={agent.name} />
       ) : null}
 
       {expanded && (last || demo) ? (
         <footer className="flex flex-col gap-2 border-t border-atlas-border pt-3">
           {last && agent.lastRun ? (
             <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-2 text-sm">
-              <p className="flex items-center gap-1">
+              <p className="flex flex-wrap items-center gap-1">
                 <Icon name={last.icon} className={cx('size-4 shrink-0 [&_path]:[vector-effect:non-scaling-stroke]', last.color)} />
                 <span className="text-atlas-muted">Last run:</span>
                 <span className={cx('font-semibold', last.color)}>{last.label}</span>

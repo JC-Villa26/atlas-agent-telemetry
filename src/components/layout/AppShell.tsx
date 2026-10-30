@@ -4,11 +4,14 @@ import { MobileNav } from './MobileNav'
 import { Sidebar } from './Sidebar'
 
 interface AppShellProps {
+  /** Short page label shown in the sticky header. */
   title: string
+  /** Make the header label the page's h1 (only for pages whose content has no h1). */
+  titleAsHeading?: boolean
   children: ReactNode
 }
 
-export function AppShell({ title, children }: AppShellProps) {
+export function AppShell({ title, titleAsHeading, children }: AppShellProps) {
   const [mobileOpen, setMobileOpen] = useState(false)
   const closeMobile = useCallback(() => setMobileOpen(false), [])
 
@@ -23,7 +26,7 @@ export function AppShell({ title, children }: AppShellProps) {
       <Sidebar />
       <MobileNav open={mobileOpen} onClose={closeMobile} />
       <div className="flex min-h-svh min-w-0 flex-col lg:pl-64">
-        <Header title={title} onMenuClick={() => setMobileOpen(true)} />
+        <Header title={title} titleAsHeading={titleAsHeading} onMenuClick={() => setMobileOpen(true)} />
         <main id="main" tabIndex={-1} className="min-w-0 flex-1 p-4 sm:p-6 lg:p-8">
           {children}
         </main>
