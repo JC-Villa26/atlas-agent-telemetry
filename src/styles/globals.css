@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+/* Dark is the default. Names are semantic, so light mode only swaps values. */
 @theme {
   --color-atlas-bg: #0b0d12;
   --color-atlas-surface: #131720;
@@ -7,17 +8,66 @@
   --color-atlas-text: #f4f6fc;
   --color-atlas-muted: #929cb1;
   --color-atlas-accent: #8b85ff;
+  --color-atlas-accent-text: #a9a4ff; /* accent used as small text */
+  --color-atlas-on-accent: #0b0d12; /* text placed on an accent background */
+  --color-atlas-hover: #1a1f2b;
 
   --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
     Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
+/* Light overrides. Utilities read var(--color-atlas-*), so redefining the
+   variables here re-themes everything. Computed WCAG contrast: text 17:1,
+   muted ~7:1, accent-text 7:1 (on surface), on-accent 5.7:1. */
+:root[data-theme="light"] {
+  --color-atlas-bg: #f6f7fb;
+  --color-atlas-surface: #ffffff;
+  --color-atlas-border: #d9deea;
+  --color-atlas-text: #11141c;
+  --color-atlas-muted: #4c566b;
+  --color-atlas-accent: #5a52e0;
+  --color-atlas-accent-text: #4a43c9;
+  --color-atlas-on-accent: #ffffff;
+  --color-atlas-hover: #eceef6;
+}
+
 @layer base {
-  html {
+  :root {
     color-scheme: dark;
+  }
+
+  :root[data-theme="light"] {
+    color-scheme: light;
   }
 
   body {
     @apply bg-atlas-bg font-sans text-atlas-text antialiased;
+  }
+
+  /* The skip-link target is focused programmatically; no ring needed. */
+  main:focus {
+    outline: none;
+  }
+}
+
+@keyframes atlas-drawer-in {
+  from {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes atlas-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .atlas-drawer[open] {
+    animation: atlas-drawer-in 200ms ease-out;
+  }
+
+  .atlas-drawer[open]::backdrop {
+    animation: atlas-fade-in 200ms ease-out;
   }
 }
