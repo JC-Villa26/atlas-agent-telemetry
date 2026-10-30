@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+/* Matches the existing theme switch (data-theme on <html>). Lets a utility apply in light mode only:
+   e.g. `light:bg-atlas-highlight-surface`. Dark styling is untouched because dark has no `light:` rules. */
+@custom-variant light (&:where([data-theme="light"], [data-theme="light"] *));
+
 /* Dark is the default. Names are semantic, so light mode only swaps values. */
 @theme {
   --color-atlas-bg: #0b0d12;
@@ -11,6 +15,10 @@
   --color-atlas-accent-text: #a9a4ff; /* accent used as small text */
   --color-atlas-on-accent: #0b0d12; /* text placed on an accent background */
   --color-atlas-hover: #1a1f2b;
+  /* Surface of a highlighted card. Dark = the normal surface, so dark mode is unchanged. */
+  --color-atlas-highlight-surface: #131720;
+  /* Surface of a highlighted card in the error state (both themes). */
+  --color-atlas-danger-surface: #271a24;
 
   /* Status colours (dark values). Always pair with an icon or text label. */
   --color-atlas-success: #34d399;
@@ -37,6 +45,8 @@
   --color-atlas-accent-text: #4a43c9;
   --color-atlas-on-accent: #ffffff;
   --color-atlas-hover: #eceef6;
+  --color-atlas-highlight-surface: #f4f2ff;
+  --color-atlas-danger-surface: #fff1f2;
   --color-atlas-success: #047857;
   --color-atlas-danger: #b91c1c;
   --color-atlas-warning: #92400e;

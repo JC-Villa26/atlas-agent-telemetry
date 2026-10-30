@@ -29,7 +29,3 @@ export const variantClasses: Record<ButtonVariant, string> = {
   ghost:
     'bg-transparent text-atlas-muted hover:bg-atlas-hover hover:text-atlas-text active:bg-atlas-border active:text-atlas-text',
 }
-
-export function cx(...parts: Array<string | false | null | undefined>): string {
-  return parts.filter(Boolean).join(' ')
-}

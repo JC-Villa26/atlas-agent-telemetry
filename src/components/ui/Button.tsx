@@ -1,7 +1,7 @@
 import type { ComponentPropsWithRef, ReactNode } from 'react'
+import { cx } from '../../lib/cx'
 import {
   baseClasses,
-  cx,
   variantClasses,
   type ButtonSize,
   type ButtonVariant,
