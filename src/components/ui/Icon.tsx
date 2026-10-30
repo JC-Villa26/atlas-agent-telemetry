@@ -20,7 +20,13 @@ const paths: Record<
   | 'pauseCircle'
   | 'helpCircle'
   | 'idleCircle'
-  | 'clock',
+  | 'clock'
+  | 'search'
+  | 'check'
+  | 'cancelled'
+  | 'chevronDown'
+  | 'arrowUpDown'
+  | 'filters',
   string
 > = {
   overview: 'M3 3h7v9H3zM14 3h7v5h-7zM14 12h7v9h-7zM3 16h7v5H3z',
@@ -51,6 +57,12 @@ const paths: Record<
     'M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0zM9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.4-1 .9-1 1.7M12 17h.01',
   idleCircle: 'M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z',
   clock: 'M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0zM12 7v5l3 2',
+  search: 'M21 21l-4.3-4.3M17 11a6 6 0 1 1-12 0 6 6 0 0 1 12 0z',
+  check: 'M5 12.5l4.5 4.5L19 7.5',
+  cancelled: 'M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0zM5.6 5.6l12.8 12.8',
+  chevronDown: 'M6 9l6 6 6-6',
+  arrowUpDown: 'M8 4v16M4 8l4-4 4 4M16 20V4M12 16l4 4 4-4',
+  filters: 'M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0M14 4v4M8 10v4M16 16v4',
 }
 
 export type IconKey = keyof typeof paths
