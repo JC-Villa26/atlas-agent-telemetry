@@ -56,8 +56,8 @@ export type TelemetryMetric = NormalMetric | LoadingMetric | EmptyMetric | Error
 
 /** Fixed demo snapshot — not "now". */
 export const DEMO_SNAPSHOT = {
-  iso: '2025-03-14T10:20:00Z',
-  label: '2025-03-14 10:20 UTC',
+  iso: '2026-10-30T10:20:00Z',
+  label: '2026-10-30 10:20 UTC',
   window: 'last 24 h vs previous 24 h',
   fleetSize: 24,
 } as const

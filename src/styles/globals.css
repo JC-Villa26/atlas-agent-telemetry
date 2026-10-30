@@ -83,7 +83,26 @@
   }
 }
 
+@keyframes atlas-indeterminate {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(333%);
+  }
+}
+
+/* Indeterminate progress segment: static (offset 25%) by default; slides only when motion is allowed. */
+.atlas-indeterminate {
+  margin-left: 25%;
+}
+
 @media (prefers-reduced-motion: no-preference) {
+  .atlas-indeterminate {
+    margin-left: 0;
+    animation: atlas-indeterminate 1.6s ease-in-out infinite;
+  }
+
   .atlas-drawer[open] {
     animation: atlas-drawer-in 200ms ease-out;
   }
