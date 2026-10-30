@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { Icon } from '../ui/Icon'
+import { IconButton } from '../ui/IconButton'
 import { Brand } from './Brand'
 import { NavList } from './NavList'
 
@@ -45,14 +46,12 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
       <div className="flex h-full flex-col gap-6 p-4">
         <div className="flex h-10 items-center justify-between px-2">
           <Brand />
-          <button
-            type="button"
+          <IconButton
+            variant="ghost"
+            label="Close navigation"
+            icon={<Icon name="close" />}
             onClick={onClose}
-            aria-label="Close navigation"
-            className="inline-flex size-9 items-center justify-center rounded-lg text-atlas-muted transition-colors hover:bg-atlas-hover hover:text-atlas-text focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-atlas-accent"
-          >
-            <Icon name="close" />
-          </button>
+          />
         </div>
         <NavList onNavigate={onClose} />
       </div>

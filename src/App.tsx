@@ -1,4 +1,9 @@
+import { lazy, Suspense } from 'react'
 import { AppShell } from './components/layout/AppShell'
+
+// Dev-only visual check (open /#ui-kit). `import.meta.env.DEV` is false in production
+// builds, so this branch and the showcase module are removed from the bundle.
+const ButtonShowcase = import.meta.env.DEV ? lazy(() => import('./dev/ButtonShowcase')) : null
 
 const metricSlots = ['Metric 1', 'Metric 2', 'Metric 3', 'Metric 4']
 
@@ -13,6 +18,16 @@ function Placeholder({ label, className = '' }: { label: string; className?: str
 }
 
 function App() {
+  if (ButtonShowcase && window.location.hash === '#ui-kit') {
+    return (
+      <AppShell title="UI kit (dev)">
+        <Suspense fallback={null}>
+          <ButtonShowcase />
+        </Suspense>
+      </AppShell>
+    )
+  }
+
   return (
     <AppShell title="Overview">
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-6">

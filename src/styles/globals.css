@@ -12,13 +12,21 @@
   --color-atlas-on-accent: #0b0d12; /* text placed on an accent background */
   --color-atlas-hover: #1a1f2b;
 
+  /* Status colours (dark values). Always pair with an icon or text label. */
+  --color-atlas-success: #34d399;
+  --color-atlas-danger: #f87171;
+  --color-atlas-warning: #fbbf24;
+
   --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
     Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco,
+    Consolas, "Liberation Mono", monospace;
 }
 
 /* Light overrides. Utilities read var(--color-atlas-*), so redefining the
    variables here re-themes everything. Computed WCAG contrast: text 17:1,
-   muted ~7:1, accent-text 7:1 (on surface), on-accent 5.7:1. */
+   muted ~7:1, accent-text 7:1 (on surface), on-accent 5.7:1;
+   status colours on surface: success 5.5:1, danger 6.5:1, warning 7.1:1. */
 :root[data-theme="light"] {
   --color-atlas-bg: #f6f7fb;
   --color-atlas-surface: #ffffff;
@@ -29,6 +37,9 @@
   --color-atlas-accent-text: #4a43c9;
   --color-atlas-on-accent: #ffffff;
   --color-atlas-hover: #eceef6;
+  --color-atlas-success: #047857;
+  --color-atlas-danger: #b91c1c;
+  --color-atlas-warning: #92400e;
 }
 
 @layer base {
