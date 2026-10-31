@@ -27,7 +27,7 @@ export function SearchField({
       <label htmlFor={id} className="text-xs font-semibold text-atlas-text">
         {label}
       </label>
-      <div className="flex min-h-9 items-center gap-2 rounded-lg border border-atlas-border bg-atlas-bg pr-1 pl-3 focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-atlas-accent">
+      <div className="flex min-h-9 items-center gap-2 rounded-lg border border-atlas-control-border bg-atlas-bg pr-1 pl-3 focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-atlas-accent">
         <Icon name="search" className="size-4 shrink-0 text-atlas-muted [&_path]:[vector-effect:non-scaling-stroke]" />
         <input
           id={id}

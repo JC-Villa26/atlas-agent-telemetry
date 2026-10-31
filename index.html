@@ -14,7 +14,14 @@
         document.documentElement.dataset.theme = t;
       } catch (e) {}
     </script>
-    <title>ATLAS · Agent Telemetry</title>
+    <title>ATLAS — Autonomous Agent Telemetry Dashboard</title>
+    <meta
+      name="description"
+      content="Responsive, accessibility-minded dashboard for autonomous agent telemetry: metrics, agent status and a searchable activity ledger. Uses fictional demo data."
+    />
+    <!-- Static, so these follow the OS color scheme, not the in-app theme toggle. Values = --color-atlas-bg. -->
+    <meta name="theme-color" content="#0b0d12" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#f6f7fb" media="(prefers-color-scheme: light)" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

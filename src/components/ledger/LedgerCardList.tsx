@@ -15,10 +15,12 @@ export function LedgerCardList({ events }: { events: readonly ActivityEvent[] })
     <ul aria-label="Execution events" className="m-0 list-none p-0">
       {events.map((e) => (
         <li key={e.runId} className="flex flex-col gap-2 border-b border-atlas-border px-4 py-3 last:border-b-0">
-          <div className="flex items-start gap-2">
-            <Icon name="agents" className={`mt-0.5 size-4 shrink-0 text-atlas-accent-text ${crisp}`} />
-            <p className="min-w-0 flex-1 text-sm font-semibold break-words text-atlas-text">{e.agentName}</p>
-            <ActivityOutcomeBadge outcome={e.outcome} className="shrink-0" />
+          <div className="flex flex-wrap items-start gap-x-2 gap-y-2">
+            <div className="flex min-w-[min(8rem,100%)] flex-1 items-start gap-2">
+              <Icon name="agents" className={`mt-0.5 size-4 shrink-0 text-atlas-accent-text ${crisp}`} />
+              <p className="min-w-0 flex-1 text-sm font-semibold break-words text-atlas-text">{e.agentName}</p>
+            </div>
+            <ActivityOutcomeBadge outcome={e.outcome} className="ml-auto shrink-0" />
           </div>
           <code className="font-mono text-xs break-all text-atlas-muted">{e.agentId}</code>
           <p className="text-sm break-words text-atlas-text">{e.description}</p>

@@ -25,6 +25,8 @@ export interface ExecutionProgressProps {
   description?: string
   /** Determinate only: show the rounded percentage (e.g. "67%"). Turn off when steps are not comparable. */
   showPercentage?: boolean
+  /** What the progress belongs to (e.g. the agent name). Prefixes the progressbar's accessible name. */
+  label?: string
   className?: string
 }
 
@@ -41,6 +43,7 @@ export function ExecutionProgress({
   progress,
   description,
   showPercentage = true,
+  label,
   className,
 }: ExecutionProgressProps) {
   const headerId = useId()
@@ -81,6 +84,10 @@ export function ExecutionProgress({
 
   const showPct = progress.mode === 'determinate' && steps.valid && showPercentage
 
+  // With a label: "Research Agent 01, In progress, 4 of 6 steps". Only facts already shown on screen
+  // (status word + real step counts); indeterminate or invalid progress never gets invented numbers.
+  const barName = label ? [label, style.word, stepsText].filter(Boolean).join(', ') : undefined
+
   return (
     <div className={cx('flex min-w-0 flex-col gap-2', className)}>
       <div className="flex items-center justify-between gap-2 text-sm">
@@ -96,7 +103,9 @@ export function ExecutionProgress({
       </div>
 
       <div
-        {...(aria ? { role: 'progressbar', 'aria-labelledby': headerId, ...aria } : { 'aria-hidden': true })}
+        {...(aria
+          ? { role: 'progressbar', ...(barName ? { 'aria-label': barName } : { 'aria-labelledby': headerId }), ...aria }
+          : { 'aria-hidden': true })}
         className="h-1.5 w-full overflow-hidden rounded-full bg-atlas-border"
       >
         <div

@@ -1,6 +1,7 @@
 import { useId, useMemo, useRef, useState } from 'react'
 import type { ActivityEvent } from '../../data/ledger'
 import { useMediaQuery } from '../../hooks/useMediaQuery'
+import { BREAKPOINTS } from '../../lib/breakpoints'
 import {
   agentsIn,
   DEFAULT_FILTERS,
@@ -93,8 +94,8 @@ export function ActivityLedger({ events, state = 'ready', className }: ActivityL
   const [filters, setFilters] = useState<LedgerFilters>(DEFAULT_FILTERS)
   const [sort, setSort] = useState<LedgerSort>(DEFAULT_SORT)
   const [filtersOpen, setFiltersOpen] = useState(false)
-  const wide = useMediaQuery('(min-width: 1280px)')
-  const roomy = useMediaQuery('(min-width: 768px)')
+  const wide = useMediaQuery(BREAKPOINTS.xl)
+  const roomy = useMediaQuery(BREAKPOINTS.md)
 
   const visible = useMemo(() => selectEvents(events, filters, sort), [events, filters, sort])
   const agents = useMemo(() => agentsIn(events), [events])
@@ -168,11 +169,11 @@ export function ActivityLedger({ events, state = 'ready', className }: ActivityL
       className={cx('flex min-w-0 flex-col overflow-hidden rounded-xl border border-atlas-border bg-atlas-surface', className)}
     >
       <header className="flex flex-col gap-1 px-5 pt-5 pb-3">
-        <div className="flex items-center justify-between gap-3">
+        <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-2">
           <h2 id={headingId} className="text-xl font-semibold text-atlas-text">
             Activity ledger
           </h2>
-          <span className="shrink-0 rounded-full border border-atlas-border px-2 py-1 font-mono text-xs font-medium tracking-wider text-atlas-accent-text uppercase">
+          <span className="ml-auto shrink-0 rounded-full border border-atlas-border px-2 py-1 font-mono text-xs font-medium tracking-wider text-atlas-accent-text uppercase">
             Demo
           </span>
         </div>

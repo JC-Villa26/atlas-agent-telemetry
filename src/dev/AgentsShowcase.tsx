@@ -73,7 +73,7 @@ export default function AgentsShowcase() {
 
       <section aria-labelledby="k-progress" className="flex flex-col gap-3">
         <h2 id="k-progress" className="text-xl font-semibold">ExecutionProgress</h2>
-        <div className="grid grid-cols-1 gap-4 min-[480px]:grid-cols-2 xl:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 min-[30rem]:grid-cols-2 xl:grid-cols-3">
           {progressCases.map((c) => (
             <div key={c.label} className="flex min-w-0 flex-col gap-3 rounded-xl border border-atlas-border bg-atlas-surface p-4">
               <p className="font-mono text-xs text-atlas-muted">{c.label}</p>

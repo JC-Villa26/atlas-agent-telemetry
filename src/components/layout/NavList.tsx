@@ -30,11 +30,14 @@ export function NavList({ onNavigate }: NavListProps) {
                 type="button"
                 aria-disabled="true"
                 title="Coming soon"
-                className={`${base} cursor-not-allowed text-atlas-muted/70`}
+                className={`${base} cursor-not-allowed flex-wrap gap-y-1 text-atlas-muted/70`}
               >
-                <Icon name={item.icon} />
-                <span>{item.label}</span>
-                <span className="ml-auto rounded border border-atlas-border px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-wider">
+                {/* Icon + label stay together; the "Soon" tag wraps below them when a large font leaves no room. */}
+                <span className="flex min-w-0 items-center gap-3">
+                  <Icon name={item.icon} />
+                  <span>{item.label}</span>
+                </span>
+                <span className="ml-auto rounded border border-atlas-border px-1 text-xs font-medium uppercase tracking-wider">
                   Soon
                 </span>
               </button>
