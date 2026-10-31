@@ -6,6 +6,8 @@ React, TypeScript and Tailwind CSS, and designed in Figma first, then implemente
 
 **Live demo:** <https://atlas-agent-telemetry.vercel.app>
 
+**Design system (Figma):** <https://www.figma.com/design/be6Sy8s9JVWl38trgqOfcz/ATLAS-%E2%80%94-Design-System?node-id=0-1>
+
 > **All data is fictional.** There is no backend, API, authentication or live telemetry. Every number,
 > agent and event comes from small deterministic TypeScript files in `src/data/`, anchored to a fixed
 > demo snapshot (2026-10-30 10:20 UTC). The interface labels this as demo data.
@@ -49,6 +51,27 @@ React, TypeScript and Tailwind CSS, and designed in Figma first, then implemente
 
 There are no runtime dependencies beyond React and Tailwind, and no state-management, routing or
 data-fetching libraries.
+
+## Design process
+
+ATLAS was designed in Figma before it was built, and the [Figma design system](https://www.figma.com/design/be6Sy8s9JVWl38trgqOfcz/ATLAS-%E2%80%94-Design-System?node-id=0-1)
+remains the reference for the interface.
+
+- **Figma first.** Each milestone started as a design: foundations, then reusable components, then
+  full dashboard screens.
+- **Reusable components.** Buttons and controls, telemetry metric cards, agent status and execution
+  components, and the activity ledger are built as component sets with variants and states.
+- **Semantic color tokens.** Colors are Figma variables with semantic names (for example `color/border`
+  and `color/text-muted`), alongside spacing, radius and layout variables. Their code syntax maps to the
+  CSS custom properties in `src/styles/globals.css` (`--color-atlas-border`, `--color-atlas-muted`, ...), so
+  design and code share one vocabulary.
+- **Dark and light themes.** Every color variable has Dark and Light values. The React app swaps those
+  values at the token level, so components never hard-code a theme.
+- **Responsive layouts.** The Dashboard Overview is designed at 1440 px (desktop), 768 px (tablet) and
+  375 px (mobile), in both themes.
+- **From specification to code.** Components are implemented in React and TypeScript and styled with
+  Tailwind CSS using those tokens. Spacing, typography, breakpoints and states are taken from the Figma
+  specifications, and the Figma file and the code are kept in step when either changes.
 
 ## Getting started
 
